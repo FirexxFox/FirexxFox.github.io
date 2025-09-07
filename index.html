@@ -2,17 +2,102 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Bot Discord - Dokumenty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bot Legal</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+      color: #ffdf6c;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1rem;
+      color: #f1f1f1;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
-  <h1>Bot Discord - Dokumentacja</h1>
-  <p>Witaj! Tutaj znajdziesz niezbędne dokumenty dla weryfikacji bota na Discordzie.</p>
+  <div class="container">
+    <h1>Bot Legal</h1>
 
-  <ul>
-    <li><a href="terms.html">Terms of Service</a></li>
-    <li><a href="privacy.html">Privacy Policy</a></li>
-  </ul>
+    <div class="card">
+      <h2>Terms of Service</h2>
+      <p>
+        Korzystając z tego bota, zgadzasz się nie używać go do celów nielegalnych ani szkodliwych. 
+        Bot może zbierać minimalne dane wymagane do jego działania (np. identyfikator użytkownika i serwera). 
+        Zastrzegamy sobie prawo do zablokowania dostępu do bota w przypadku naruszenia zasad.
+      </p>
+    </div>
 
-  <p>Właściciel bota: [Twoja nazwa/nick]</p>
+    <div class="card">
+      <h2>Privacy Policy</h2>
+      <p>
+        Ten bot nie przechowuje danych osobowych użytkowników poza tym, co jest niezbędne do działania jego funkcji. 
+        Dane takie jak identyfikatory Discorda mogą być tymczasowo przetwarzane. 
+        Nie udostępniamy tych danych osobom trzecim i możesz w każdej chwili poprosić o ich usunięcie.
+      </p>
+    </div>
+
+    <footer>
+      &copy; 2025 Twój Bot. Wszystkie prawa zastrzeżone.
+    </footer>
+  </div>
 </body>
 </html>
