@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgroZone Bot</title>
-  <link rel="icon" type="image/png" href="naklejka_dc.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -21,25 +20,50 @@
       top: 0; left: 0; width: 100%;
       background: rgba(0,0,0,0.8);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 10px 30px;
+      padding: 15px 50px;
       z-index: 1000;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    header.scrolled {
+      background: rgba(0,20,0,0.95);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     }
     header img {
-      height: 40px;
+      height: 50px;
+      transition: transform 0.3s;
+    }
+    header img:hover {
+      transform: scale(1.05);
     }
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       text-decoration: none;
       color: #8aff75;
       font-weight: bold;
-      font-size: 0.9rem;
       transition: 0.3s;
+      position: relative;
     }
-    nav a:hover { color: #fff; }
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #8aff75, #ffffff);
+      transition: width 0.3s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    nav a:hover:after {
+      width: 100%;
+    }
 
     section {
-      min-height: 100vh;
-      padding: 80px 30px 30px;
+      padding: 30px 50px;
+      position: relative;
+      overflow: hidden;
     }
 
     .hero {
@@ -48,56 +72,162 @@
       justify-content: center;
       align-items: center;
       text-align: center;
+      min-height: 100vh;
+      padding: 100px 50px 50px;
     }
     .hero h1 {
-      font-size: 5rem;
+      font-size: 4rem;
       background: linear-gradient(90deg, #8aff75, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 2s infinite alternate;
+      margin-bottom: 20px;
     }
     @keyframes glow {
-      from { text-shadow: 0 0 3px #8aff75; }
-      to   { text-shadow: 0 0 12px #8aff75; }
+      from { text-shadow: 0 0 5px #8aff75; }
+      to   { text-shadow: 0 0 20px #8aff75, 0 0 30px #8aff75; }
     }
     .hero p {
-      margin-top: 10px;
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #ccc;
+      max-width: 600px;
+    }
+
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    .animated-bg:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(138,255,117,0.1) 0%, transparent 70%);
+      animation: pulse 15s infinite linear;
+    }
+    @keyframes pulse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .gradient-border {
+      position: relative;
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 15px 0;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .gradient-border:before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #8aff75, transparent, #8aff75);
+      border-radius: 17px;
+      z-index: -1;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .gradient-border:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    }
+    .gradient-border:hover:before {
+      opacity: 1;
+      animation: border-pulse 2s infinite;
+    }
+    @keyframes border-pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
     }
 
     h2 {
-      font-size: 3rem;
-      margin-bottom: 2px;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
       color: #8aff75;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #8aff75, transparent);
     }
 
-    .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 15px;
-      border-radius: 12px;
-      margin: 2px 0; /* minimalne odstępy */
-      transition: transform 0.2s, box-shadow 0.2s;
-      font-size: 0.95rem;
+    h3 {
+      color: #8aff75;
+      margin-bottom: 10px;
+      font-size: 1.5rem;
     }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+
+    ul {
+      padding-left: 20px;
+      margin: 15px 0;
+    }
+    li {
+      margin-bottom: 8px;
+      line-height: 1.5;
     }
 
     footer {
       text-align: center;
-      padding: 15px;
+      padding: 30px;
       background: rgba(0,0,0,0.9);
       color: #777;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      position: relative;
+    }
+    footer:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #8aff75, transparent);
     }
 
     @media(max-width: 768px) {
-      header { flex-direction: column; }
-      .hero h1 { font-size: 2rem; }
-      section { padding: 70px 15px 20px; }
+      header { 
+        flex-direction: column; 
+        padding: 15px 20px;
+      }
+      nav {
+        margin-top: 15px;
+      }
+      nav a {
+        margin: 0 10px;
+      }
+      .hero h1 { 
+        font-size: 2.5rem; 
+      }
+      section { 
+        padding: 30px 20px; 
+      }
+      .hero {
+        padding: 100px 20px 30px;
+      }
+      h2 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
@@ -113,37 +243,48 @@
 
   <!-- HOME -->
   <section id="home" class="hero">
+    <div class="animated-bg"></div>
     <h1>AgroZone Bot</h1>
     <p>Twój osobisty asystent do Farming Simulator i zarządzania społecznością Discord!</p>
   </section>
 
   <!-- TOS -->
   <section id="tos">
+    <div class="animated-bg"></div>
     <h2>📜 Terms of Service</h2>
-    <div class="card">
-      <p>Korzystając z AgroZone Bota akceptujesz zasady:</p>
+    <div class="gradient-border">
+      <p>
+        Niniejsze warunki określają zasady korzystania z AgroZone Bota na Discordzie.  
+        Korzystając z bota, użytkownik akceptuje niniejsze zasady:
+      </p>
       <ul>
-        <li>Bot jest własnością <b>fajerfox</b> (Discord ID: 599607411782844440).</li>
-        <li>Nadużycia i wykorzystywanie błędów są zakazane.</li>
-        <li>Błędy należy zgłaszać właścicielowi.</li>
-        <li>Dostęp może być zablokowany przy naruszeniach.</li>
-        <li>Bot działa "as is" – bez gwarancji stałej dostępności.</li>
+        <li>Bot jest własnością <b>fajerfox</b> (Discord: fajerfox, ID: 599607411782844440).</li>
+        <li>Użytkownik ma obowiązek korzystać z komend zgodnie z ich przeznaczeniem.</li>
+        <li>Wszelkie błędy, nadużycia i problemy należy zgłaszać właścicielowi bota.</li>
+        <li>Zabronione jest wykorzystywanie błędów bota do uzyskania przewagi, psucia działania bota czy obchodzenia zasad.</li>
+        <li>Właściciel zastrzega sobie prawo do zablokowania dostępu do bota w przypadku naruszenia zasad.</li>
+        <li>Bot udostępniany jest w stanie "as is" – właściciel nie gwarantuje, że będzie działał bez przerw lub błędów.</li>
+        <li>Właściciel nie ponosi odpowiedzialności za straty wynikłe z używania bota.</li>
       </ul>
     </div>
   </section>
 
   <!-- PRIVACY -->
   <section id="privacy">
+    <div class="animated-bg"></div>
     <h2>🔒 Privacy Policy</h2>
-    <div class="card">
-      <p>AgroZone Bot gromadzi wyłącznie dane niezbędne do działania:</p>
+    <div class="gradient-border">
+      <p>
+        Polityka prywatności opisuje jakie dane gromadzi AgroZone Bot, w jakim celu i jak są chronione.
+      </p>
       <ul>
-        <li>Nick w Farming Simulator, Discord ID.</li>
-        <li>Pozycję na serwerze FS.</li>
-        <li>Informacje o rolach VIP (Basic, Premium).</li>
-        <li>Dane służą do zarządzania aktywnością, rolami i logami administracyjnymi.</li>
-        <li>Dane przechowywane są wyłącznie w prywatnej bazie – bez dostępu osób trzecich.</li>
-        <li>Możesz zażądać usunięcia danych kontaktując się z właścicielem bota.</li>
+        <li>Bot zbiera: nick gracza z FS, Discord ID, pozycję na serwerze FS, daty i informacje o wykupionych dodatkach (VIP Basic, VIP Premium).</li>
+        <li>Dane wykorzystywane są do: liczenia aktywności, zarządzania rolami VIP, tworzenia logów administracyjnych.</li>
+        <li>Dane są przechowywane w prywatnej bazie danych, do której dostęp ma tylko właściciel bota.</li>
+        <li>Dane nie są sprzedawane ani przekazywane osobom trzecim.</li>
+        <li>Wdrożone są środki bezpieczeństwa w celu ochrony danych (dostęp ograniczony wyłącznie do właściciela bota).</li>
+        <li>Użytkownik ma prawo zażądać usunięcia swoich danych poprzez kontakt z właścicielem bota na Discordzie.</li>
+        <li>Dane przechowywane są tak długo, jak długo użytkownik korzysta z bota lub do momentu zgłoszenia żądania ich usunięcia.</li>
       </ul>
     </div>
   </section>
@@ -151,5 +292,30 @@
   <footer>
     © 2025 AgroZone Bot — Stworzony przez fajerfox
   </footer>
+
+  <script>
+    // Dodanie klasy po scrollowaniu
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Płynne przewijanie do anchorów
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        window.scrollTo({
+          top: targetElement.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
 </body>
 </html>
