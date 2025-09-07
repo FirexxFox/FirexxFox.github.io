@@ -13,13 +13,21 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1a1f1a 0%, #2e4d25 50%, #000 100%);
+      background: linear-gradient(-45deg, #0f0f0f, #1a3317, #2e4d25, #0f0f0f);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
       color: #fff;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
     }
 
     .container {
@@ -90,18 +98,18 @@
     <div class="card">
       <h2>Terms of Service</h2>
       <p>
-        Korzystając z tego bota, zgadzasz się nie używać go do celów nielegalnych ani szkodliwych. 
-        Bot może zbierać minimalne dane wymagane do jego działania (np. identyfikator użytkownika i serwera). 
-        Zastrzegamy sobie prawo do zablokowania dostępu do bota w przypadku naruszenia zasad.
+        Korzystając z AgroZone Bota, zgadzasz się przestrzegać zasad Discorda oraz nie używać bota do działań nielegalnych, szkodliwych lub łamiących regulaminy serwerów. 
+        Administracja zastrzega sobie prawo do zawieszenia lub usunięcia dostępu do bota w przypadku nadużyć. 
+        Bot działa w trybie „as is” – bez gwarancji dostępności i poprawności działania.
       </p>
     </div>
 
     <div class="card">
       <h2>Privacy Policy</h2>
       <p>
-        Ten bot nie przechowuje danych osobowych użytkowników poza tym, co jest niezbędne do działania jego funkcji. 
-        Dane takie jak identyfikatory Discorda mogą być tymczasowo przetwarzane. 
-        Nie udostępniamy tych danych osobom trzecim i możesz w każdej chwili poprosić o ich usunięcie.
+        AgroZone Bot zbiera wyłącznie minimalne dane potrzebne do działania, takie jak identyfikatory użytkowników, serwerów oraz dane rozgrywki w Farming Simulator. 
+        Dane te nie są udostępniane osobom trzecim i są usuwane, jeśli nie są już potrzebne. 
+        Użytkownik może poprosić o usunięcie danych, kontaktując się z administracją projektu.
       </p>
     </div>
 
