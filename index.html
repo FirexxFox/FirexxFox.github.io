@@ -6,7 +6,6 @@
   <title>AgroZone Bot</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: Arial, sans-serif;
       color: #fff;
@@ -14,7 +13,30 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
-
+    /* --- ANIMOWANE TŁO DLA CAŁEJ STRONY --- */
+    .animated-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 60vw;
+      height: 60vw;
+      max-width: 900px;
+      max-height: 900px;
+      min-width: 300px;
+      min-height: 300px;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(138,255,117,0.18) 0%, transparent 70%);
+      animation: pulse-bg 8s infinite ease-in-out;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    @keyframes pulse-bg {
+      0% { box-shadow: 0 0 80px 40px #8aff75; }
+      50% { box-shadow: 0 0 180px 90px #8aff75; }
+      100% { box-shadow: 0 0 80px 40px #8aff75; }
+    }
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -59,13 +81,12 @@
     nav a:hover:after {
       width: 100%;
     }
-
     section {
       padding: 30px 50px;
       position: relative;
       overflow: hidden;
+      z-index: 1;
     }
-
     .hero {
       display: flex;
       flex-direction: column;
@@ -92,27 +113,6 @@
       color: #ccc;
       max-width: 600px;
     }
-
-    /* NOWY ESTETYCZNY ANIMOWANY OKRĄG W TLE */
-    .animated-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 400px;
-      height: 400px;
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(138,255,117,0.18) 0%, transparent 70%);
-      animation: pulse-bg 8s infinite ease-in-out;
-      opacity: 0.6;
-    }
-    @keyframes pulse-bg {
-      0% { box-shadow: 0 0 60px 30px #8aff75; }
-      50% { box-shadow: 0 0 120px 60px #8aff75; }
-      100% { box-shadow: 0 0 60px 30px #8aff75; }
-    }
-
     .gradient-border {
       position: relative;
       background: rgba(255,255,255,0.05);
@@ -147,7 +147,6 @@
       50% { opacity: 1; }
       100% { opacity: 0.7; }
     }
-
     h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
@@ -167,13 +166,11 @@
       height: 3px;
       background: linear-gradient(90deg, transparent, #8aff75, transparent);
     }
-
     h3 {
       color: #8aff75;
       margin-bottom: 10px;
       font-size: 1.5rem;
     }
-
     ul {
       padding-left: 20px;
       margin: 15px 0;
@@ -182,7 +179,6 @@
       margin-bottom: 8px;
       line-height: 1.5;
     }
-
     footer {
       text-align: center;
       padding: 30px;
@@ -200,7 +196,6 @@
       height: 2px;
       background: linear-gradient(90deg, transparent, #8aff75, transparent);
     }
-
     @media(max-width: 768px) {
       header { 
         flex-direction: column; 
@@ -224,10 +219,17 @@
       h2 {
         font-size: 2rem;
       }
+      .animated-bg {
+        width: 90vw;
+        height: 90vw;
+        max-width: 350px;
+        max-height: 350px;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="animated-bg"></div>
   <header>
     <img src="agro_zone_logo.jpg" alt="AgroZone Logo">
     <nav>
@@ -236,17 +238,13 @@
       <a href="#privacy">Privacy</a>
     </nav>
   </header>
-
   <!-- HOME -->
   <section id="home" class="hero">
-    <div class="animated-bg"></div>
     <h1>AgroZone Bot</h1>
     <p>Twój osobisty asystent do Farming Simulator i zarządzania społecznością Discord!</p>
   </section>
-
   <!-- TOS -->
   <section id="tos">
-    <div class="animated-bg"></div>
     <h2>📜 Terms of Service</h2>
     <div class="gradient-border">
       <p>
@@ -263,10 +261,8 @@
       </ul>
     </div>
   </section>
-
   <!-- PRIVACY -->
   <section id="privacy">
-    <div class="animated-bg"></div>
     <h2>🔒 Privacy Policy</h2>
     <div class="gradient-border">
       <p>
@@ -283,11 +279,9 @@
       </ul>
     </div>
   </section>
-
   <footer>
     © 2025 AgroZone Bot — Stworzony przez fajerfox
   </footer>
-
   <script>
     // Dodanie klasy po scrollowaniu
     window.addEventListener('scroll', function() {
@@ -298,7 +292,6 @@
         header.classList.remove('scrolled');
       }
     });
-
     // Płynne przewijanie do anchorów
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
