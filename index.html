@@ -12,32 +12,36 @@
       background: linear-gradient(135deg, #0d0d0d, #1a1a1a 60%, #123f1a);
       overflow-x: hidden;
       scroll-behavior: smooth;
+      position: relative;
+      min-height: 100vh;
     }
-    /* --- JEDEN OBRACAJĄCY SIĘ PROSTOKĄT --- */
-    .rotating-rect {
+    /* --- ANIMOWANE LOGO W TLE --- */
+    .logo-bg {
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 400px;
-      height: 220px;
-      background: linear-gradient(120deg, #8aff75 30%, #123f1a 80%);
-      border-radius: 30px;
-      opacity: 0.13;
+      width: 480px;
+      height: 480px;
+      max-width: 80vw;
+      max-height: 80vh;
       transform: translate(-50%, -50%);
       z-index: 0;
-      box-shadow: 0 0 80px 25px #8aff75;
-      animation: rect-spin 12s linear infinite;
+      opacity: 0.17;
       pointer-events: none;
+      background: url('naklejka_dc.png') no-repeat center center;
+      background-size: contain;
+      animation: logoFade 8s infinite alternate;
+      filter: drop-shadow(0 0 60px #8aff75);
     }
-    @keyframes rect-spin {
-      0% { transform: translate(-50%, -50%) rotate(0deg);}
-      100% { transform: translate(-50%, -50%) rotate(360deg);}
+    @keyframes logoFade {
+      0% { opacity: 0.10; filter: drop-shadow(0 0 40px #8aff75);}
+      50% { opacity: 0.24; filter: drop-shadow(0 0 100px #8aff75);}
+      100% { opacity: 0.10; filter: drop-shadow(0 0 40px #8aff75);}
     }
     header, section, footer {
       position: relative;
       z-index: 1;
     }
-    /* --- Reszta stylów z poprzedniej wersji, bez animated-bg --- */
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -54,6 +58,9 @@
     header img {
       height: 50px;
       transition: transform 0.3s;
+      /* Nowe logo */
+      border-radius: 10px;
+      box-shadow: 0 0 15px #123f1a33;
     }
     header img:hover {
       transform: scale(1.05);
@@ -197,9 +204,11 @@
       background: linear-gradient(90deg, transparent, #8aff75, transparent);
     }
     @media(max-width: 768px) {
-      .rotating-rect {
-        width: 220px;
-        height: 110px;
+      .logo-bg {
+        width: 75vw;
+        height: 75vw;
+        max-width: 340px;
+        max-height: 340px;
       }
       header { 
         flex-direction: column; 
@@ -227,9 +236,11 @@
   </style>
 </head>
 <body>
-  <div class="rotating-rect"></div>
+  <!-- Animowane logo w tle -->
+  <div class="logo-bg"></div>
   <header>
-    <img src="agro_zone_logo.jpg" alt="AgroZone Logo">
+    <!-- Logo serwera -->
+    <img src="naklejka_dc.png" alt="Logo serwera">
     <nav>
       <a href="#home">Home</a>
       <a href="#tos">ToS</a>
