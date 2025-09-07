@@ -13,30 +13,31 @@
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
-    /* --- ANIMOWANE TŁO DLA CAŁEJ STRONY --- */
-    .animated-bg {
+    /* --- JEDEN OBRACAJĄCY SIĘ PROSTOKĄT --- */
+    .rotating-rect {
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 60vw;
-      height: 60vw;
-      max-width: 900px;
-      max-height: 900px;
-      min-width: 300px;
-      min-height: 300px;
+      width: 400px;
+      height: 220px;
+      background: linear-gradient(120deg, #8aff75 30%, #123f1a 80%);
+      border-radius: 30px;
+      opacity: 0.13;
       transform: translate(-50%, -50%);
       z-index: 0;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(138,255,117,0.18) 0%, transparent 70%);
-      animation: pulse-bg 8s infinite ease-in-out;
-      opacity: 0.45;
+      box-shadow: 0 0 80px 25px #8aff75;
+      animation: rect-spin 12s linear infinite;
       pointer-events: none;
     }
-    @keyframes pulse-bg {
-      0% { box-shadow: 0 0 80px 40px #8aff75; }
-      50% { box-shadow: 0 0 180px 90px #8aff75; }
-      100% { box-shadow: 0 0 80px 40px #8aff75; }
+    @keyframes rect-spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg);}
+      100% { transform: translate(-50%, -50%) rotate(360deg);}
     }
+    header, section, footer {
+      position: relative;
+      z-index: 1;
+    }
+    /* --- Reszta stylów z poprzedniej wersji, bez animated-bg --- */
     header {
       position: fixed;
       top: 0; left: 0; width: 100%;
@@ -85,7 +86,6 @@
       padding: 30px 50px;
       position: relative;
       overflow: hidden;
-      z-index: 1;
     }
     .hero {
       display: flex;
@@ -197,6 +197,10 @@
       background: linear-gradient(90deg, transparent, #8aff75, transparent);
     }
     @media(max-width: 768px) {
+      .rotating-rect {
+        width: 220px;
+        height: 110px;
+      }
       header { 
         flex-direction: column; 
         padding: 15px 20px;
@@ -219,17 +223,11 @@
       h2 {
         font-size: 2rem;
       }
-      .animated-bg {
-        width: 90vw;
-        height: 90vw;
-        max-width: 350px;
-        max-height: 350px;
-      }
     }
   </style>
 </head>
 <body>
-  <div class="animated-bg"></div>
+  <div class="rotating-rect"></div>
   <header>
     <img src="agro_zone_logo.jpg" alt="AgroZone Logo">
     <nav>
