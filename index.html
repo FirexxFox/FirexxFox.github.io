@@ -3,119 +3,179 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgroZone - Legal</title>
+  <title>AgroZone Bot</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(-45deg, #0f0f0f, #1a3317, #2e4d25, #0f0f0f);
-      background-size: 400% 400%;
-      animation: gradient 15s ease infinite;
+      font-family: Arial, sans-serif;
       color: #fff;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a 60%, #123f1a);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: rgba(0,0,0,0.8);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+    }
+    header img {
+      height: 50px;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #8aff75;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+
+    section {
       min-height: 100vh;
+      padding: 100px 50px 50px;
+    }
+
+    .hero {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
-      padding: 20px;
-    }
-
-    @keyframes gradient {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
-
-    .container {
-      max-width: 900px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-      padding: 40px;
-      border: 1px solid rgba(0, 255, 100, 0.2);
-    }
-
-    h1 {
+      align-items: center;
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.5rem;
-      color: #9eff8f;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      background: linear-gradient(90deg, #8aff75, #ffffff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #8aff75; }
+      to   { text-shadow: 0 0 20px #8aff75; }
+    }
+    .hero p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #ccc;
     }
 
     .card {
-      background: rgba(0, 0, 0, 0.5);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 20px;
       border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-      border: 1px solid rgba(158, 255, 143, 0.2);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      margin: 20px 0;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.6);
     }
 
     h2 {
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-      color: #9eff8f;
-    }
-
-    p {
-      line-height: 1.6;
-      font-size: 1rem;
-      color: #e6ffe6;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #8aff75;
     }
 
     footer {
       text-align: center;
-      margin-top: 30px;
+      padding: 30px;
+      background: rgba(0,0,0,0.9);
+      color: #777;
       font-size: 0.9rem;
-      opacity: 0.8;
-      color: #9eff8f;
     }
 
-    .logo {
-      display: block;
-      margin: 0 auto 20px auto;
-      max-width: 200px;
+    @media(max-width: 768px) {
+      header { flex-direction: column; }
+      .hero h1 { font-size: 2.5rem; }
+      section { padding: 80px 20px 30px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="agro_zone_logo.jpg" alt="AgroZone Logo" class="logo">
-    <h1>AgroZone Legal</h1>
+  <header>
+    <img src="agro_zone_logo.jpg" alt="AgroZone Logo">
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Funkcje</a>
+      <a href="#tos">ToS</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+  </header>
 
+  <!-- HOME -->
+  <section id="home" class="hero">
+    <h1>AgroZone Bot</h1>
+    <p>Twój osobisty asystent do Farming Simulator i zarządzania społecznością Discord!</p>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <h2>Funkcje Bota</h2>
     <div class="card">
-      <h2>Terms of Service</h2>
+      <h3>🔗 Połącz konto</h3>
+      <p>Komenda <b>/polacz_konto</b> pozwala połączyć konto Discord z Farming Simulator, aby liczyła się Twoja aktywność.</p>
+    </div>
+    <div class="card">
+      <h3>📊 Profil</h3>
+      <p>Komenda <b>/profil</b> wyświetla Twoją aktywność albo innego gracza.</p>
+    </div>
+    <div class="card">
+      <h3>🎫 Tickety</h3>
+      <p>System zgłoszeń z wyborem kategorii problemu.</p>
+    </div>
+    <div class="card">
+      <h3>⏳ Liczenie aktywności</h3>
+      <p>Aktywność na serwerach FS daje <b>AgroCoiny</b>, które trzeba wydawać zgodnie z przeznaczeniem.</p>
+    </div>
+  </section>
+
+  <!-- TOS -->
+  <section id="tos">
+    <h2>📜 Terms of Service</h2>
+    <div class="card">
       <p>
-        Korzystając z AgroZone Bota, zgadzasz się przestrzegać zasad Discorda oraz nie używać bota do działań nielegalnych, szkodliwych lub łamiących regulaminy serwerów. 
-        Administracja zastrzega sobie prawo do zawieszenia lub usunięcia dostępu do bota w przypadku nadużyć. 
-        Bot działa w trybie „as is” – bez gwarancji dostępności i poprawności działania.
+        Bot AgroZone jest własnością <b>fajerfox</b> (Discord: fajerfox, ID: 599607411782844440).<br><br>
+        Użytkownik ma obowiązek korzystać z bota zgodnie z jego przeznaczeniem. 
+        Wszelkie błędy należy niezwłocznie zgłaszać właścicielowi bota. 
+        Wykorzystywanie błędów w celu zdobycia przewagi lub psucia działania bota jest zabronione.<br><br>
+        W przypadku nadużyć dostęp do bota lub jego funkcji może zostać zablokowany. 
+        Bot udostępniany jest w stanie "as is" bez gwarancji ciągłości działania.
       </p>
     </div>
+  </section>
 
+  <!-- PRIVACY -->
+  <section id="privacy">
+    <h2>🔒 Privacy Policy</h2>
     <div class="card">
-      <h2>Privacy Policy</h2>
       <p>
-        AgroZone Bot zbiera wyłącznie minimalne dane potrzebne do działania, takie jak identyfikatory użytkowników, serwerów oraz dane rozgrywki w Farming Simulator. 
-        Dane te nie są udostępniane osobom trzecim i są usuwane, jeśli nie są już potrzebne. 
-        Użytkownik może poprosić o usunięcie danych, kontaktując się z administracją projektu.
+        Bot AgroZone zbiera i zapisuje dane związane z aktywnością na serwerach Farming Simulator (FS), w tym:
+        <ul>
+          <li>Nick gracza z FS</li>
+          <li>Discord ID użytkownika</li>
+          <li>Pozycję gracza na serwerze FS</li>
+          <li>Dane o wykupionych dodatkach (VIP Basic, VIP Premium)</li>
+        </ul>
+        Dane te służą do tworzenia logów administracyjnych i zarządzania dodatkami. 
+        Nie są sprzedawane ani udostępniane osobom trzecim. 
+        Dostęp do danych ma wyłącznie właściciel bota i są one przechowywane w prywatnej bazie danych.<br><br>
+        Użytkownik ma prawo zażądać usunięcia swoich danych poprzez kontakt z właścicielem bota na Discordzie.
       </p>
     </div>
+  </section>
 
-    <footer>
-      &copy; 2025 AgroZone Bot. Wszystkie prawa zastrzeżone.
-    </footer>
-  </div>
+  <footer>
+    © 2025 AgroZone Bot — Stworzony przez fajerfox
+  </footer>
 </body>
 </html>
