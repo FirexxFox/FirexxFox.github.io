@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgroZone Bot</title>
+  <link rel="icon" type="image/png" href="naklejka_dc.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -20,26 +21,25 @@
       top: 0; left: 0; width: 100%;
       background: rgba(0,0,0,0.8);
       display: flex; justify-content: space-between; align-items: center;
-      padding: 15px 50px;
+      padding: 10px 30px;
       z-index: 1000;
     }
     header img {
-      height: 50px;
+      height: 40px;
     }
     nav a {
-      margin: 0 15px;
+      margin: 0 10px;
       text-decoration: none;
       color: #8aff75;
       font-weight: bold;
+      font-size: 0.9rem;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: #fff;
-    }
+    nav a:hover { color: #fff; }
 
     section {
       min-height: 100vh;
-      padding: 100px 50px 50px;
+      padding: 80px 30px 30px;
     }
 
     .hero {
@@ -50,53 +50,54 @@
       text-align: center;
     }
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3rem;
       background: linear-gradient(90deg, #8aff75, #ffffff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: glow 2s infinite alternate;
     }
     @keyframes glow {
-      from { text-shadow: 0 0 5px #8aff75; }
-      to   { text-shadow: 0 0 20px #8aff75; }
+      from { text-shadow: 0 0 3px #8aff75; }
+      to   { text-shadow: 0 0 12px #8aff75; }
     }
     .hero p {
-      margin-top: 20px;
-      font-size: 1.2rem;
+      margin-top: 10px;
+      font-size: 1rem;
       color: #ccc;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      color: #8aff75;
     }
 
     .card {
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 15px;
-      margin: 10px 0; /* zmniejszone odstępy */
-      transition: transform 0.3s, box-shadow 0.3s;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 6px 0; /* minimalne odstępy */
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 0.95rem;
     }
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.6);
-    }
-
-    h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      color: #8aff75;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 10px rgba(0,0,0,0.5);
     }
 
     footer {
       text-align: center;
-      padding: 30px;
+      padding: 15px;
       background: rgba(0,0,0,0.9);
       color: #777;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
 
     @media(max-width: 768px) {
       header { flex-direction: column; }
-      .hero h1 { font-size: 2.5rem; }
-      section { padding: 80px 20px 30px; }
+      .hero h1 { font-size: 2rem; }
+      section { padding: 70px 15px 20px; }
     }
   </style>
 </head>
@@ -120,40 +121,23 @@
   <!-- FEATURES -->
   <section id="features">
     <h2>Funkcje Bota</h2>
-    <div class="card">
-      <h3>🔗 Połącz konto</h3>
-      <p>Komenda <b>/polacz_konto</b> pozwala połączyć konto Discord z Farming Simulator, aby liczyła się Twoja aktywność.</p>
-    </div>
-    <div class="card">
-      <h3>📊 Profil</h3>
-      <p>Komenda <b>/profil</b> wyświetla Twoją aktywność albo innego gracza.</p>
-    </div>
-    <div class="card">
-      <h3>🎫 Tickety</h3>
-      <p>System zgłoszeń z wyborem kategorii problemu.</p>
-    </div>
-    <div class="card">
-      <h3>⏳ Liczenie aktywności</h3>
-      <p>Aktywność na serwerach FS daje <b>AgroCoiny</b>, które trzeba wydawać zgodnie z przeznaczeniem.</p>
-    </div>
+    <div class="card"><b>🔗 Połącz konto</b> – komenda <code>/polacz_konto</code> łączy konto Discord z Farming Simulator.</div>
+    <div class="card"><b>📊 Profil</b> – komenda <code>/profil</code> wyświetla Twoją aktywność albo innego gracza.</div>
+    <div class="card"><b>🎫 Tickety</b> – system zgłoszeń z kategoriami problemu.</div>
+    <div class="card"><b>⏳ Aktywność</b> – liczenie aktywności na serwerze FS daje AgroCoiny.</div>
   </section>
 
   <!-- TOS -->
   <section id="tos">
     <h2>📜 Terms of Service</h2>
     <div class="card">
-      <p>
-        Niniejsze warunki określają zasady korzystania z AgroZone Bota na Discordzie.  
-        Korzystając z bota, użytkownik akceptuje niniejsze zasady:
-      </p>
+      <p>Korzystając z AgroZone Bota akceptujesz zasady:</p>
       <ul>
-        <li>Bot jest własnością <b>fajerfox</b> (Discord: fajerfox, ID: 599607411782844440).</li>
-        <li>Użytkownik ma obowiązek korzystać z komend zgodnie z ich przeznaczeniem.</li>
-        <li>Wszelkie błędy, nadużycia i problemy należy zgłaszać właścicielowi bota.</li>
-        <li>Zabronione jest wykorzystywanie błędów bota do uzyskania przewagi, psucia działania bota czy obchodzenia zasad.</li>
-        <li>Właściciel zastrzega sobie prawo do zablokowania dostępu do bota w przypadku naruszenia zasad.</li>
-        <li>Bot udostępniany jest w stanie "as is" – właściciel nie gwarantuje, że będzie działał bez przerw lub błędów.</li>
-        <li>Właściciel nie ponosi odpowiedzialności za straty wynikłe z używania bota.</li>
+        <li>Bot jest własnością <b>fajerfox</b> (Discord ID: 599607411782844440).</li>
+        <li>Nadużycia i wykorzystywanie błędów są zakazane.</li>
+        <li>Błędy należy zgłaszać właścicielowi.</li>
+        <li>Dostęp może być zablokowany przy naruszeniach.</li>
+        <li>Bot działa "as is" – bez gwarancji stałej dostępności.</li>
       </ul>
     </div>
   </section>
@@ -162,17 +146,14 @@
   <section id="privacy">
     <h2>🔒 Privacy Policy</h2>
     <div class="card">
-      <p>
-        Polityka prywatności opisuje jakie dane gromadzi AgroZone Bot, w jakim celu i jak są chronione.
-      </p>
+      <p>AgroZone Bot gromadzi wyłącznie dane niezbędne do działania:</p>
       <ul>
-        <li>Bot zbiera: nick gracza z FS, Discord ID, pozycję na serwerze FS, daty i informacje o wykupionych dodatkach (VIP Basic, VIP Premium).</li>
-        <li>Dane wykorzystywane są do: liczenia aktywności, zarządzania rolami VIP, tworzenia logów administracyjnych.</li>
-        <li>Dane są przechowywane w prywatnej bazie danych, do której dostęp ma tylko właściciel bota.</li>
-        <li>Dane nie są sprzedawane ani przekazywane osobom trzecim.</li>
-        <li>Wdrożone są środki bezpieczeństwa w celu ochrony danych (dostęp ograniczony wyłącznie do właściciela bota).</li>
-        <li>Użytkownik ma prawo zażądać usunięcia swoich danych poprzez kontakt z właścicielem bota na Discordzie.</li>
-        <li>Dane przechowywane są tak długo, jak długo użytkownik korzysta z bota lub do momentu zgłoszenia żądania ich usunięcia.</li>
+        <li>Nick w Farming Simulator, Discord ID.</li>
+        <li>Pozycję na serwerze FS.</li>
+        <li>Informacje o rolach VIP (Basic, Premium).</li>
+        <li>Dane służą do zarządzania aktywnością, rolami i logami administracyjnymi.</li>
+        <li>Dane przechowywane są wyłącznie w prywatnej bazie – bez dostępu osób trzecich.</li>
+        <li>Możesz zażądać usunięcia danych kontaktując się z właścicielem bota.</li>
       </ul>
     </div>
   </section>
